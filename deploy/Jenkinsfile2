@@ -78,7 +78,7 @@ pipeline {
     }
     stage('============ Deploy workload ============') {
         when { expression { return params.DEPLOY_WORKLOAD } }
-        agent { label 'deploy' }
+        agent any
         steps {
             sshagent (credentials: ['aws_ec2_user_ssh']) {
                 sh """#!/bin/bash
